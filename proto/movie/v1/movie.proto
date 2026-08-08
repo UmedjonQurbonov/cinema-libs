@@ -1,1 +1,119 @@
 syntax = "proto3";
+
+option go_package = "gen/go/movie/v1";
+
+package movie;
+
+import "google/protobuf/timestamp.proto";
+//
+service MovieService {
+  // Create movie
+  rpc Create(CreateMovieRequest) returns (CreateMovieResponse);
+  // Get Movies
+  rpc List(ListMovieRequest) returns (ListMovieResponse);
+  // Get Movie by id
+  rpc GetById(GetMovieRequest) returns (GetMovieResponse);
+}
+
+//
+service HallsService {
+  // Create Halls
+  rpc Create(CreateHallsRequest) returns (CreateHallsResponse);
+  // Get Halls
+  rpc List(ListHallsRequest) returns (ListHallsResponse);
+}
+
+message CreateMovieRequest {
+  string title = 1;
+  string description = 2;
+  int32 duration = 3;
+  int32 age_limit = 4;
+}
+
+message CreateMovieResponse {
+  int64 id = 1;
+}
+
+message ListMovieRequest {
+}
+
+message MovieItem {
+  int64 id = 1;
+  string title = 2;
+  int32 duration = 3;
+  int32 age_limit = 4;
+}
+
+message ListMovieResponse {
+  repeated MovieItem movies = 1;
+}
+
+message GetMovieRequest {
+  int64 id = 1;
+}
+
+message GetMovieResponse {
+  int64 id = 1;
+  string title = 2;
+  string description = 3;
+  int32 duration = 4;
+  int32 age_limit = 5;
+}
+
+message CreateHallsRequest {
+  string name = 2;
+  int32 total_seats = 3;
+}
+
+message CreateHallsResponse {
+  int64 id = 1;
+}
+
+message ListHallsRequest {}
+
+message Hall {
+  int64 id = 1;
+  string name = 2;
+  int32 total_seats = 3;
+}
+
+message ListHallsResponse {
+  repeated Hall halls = 1;
+} 
+
+
+//
+service ShowService {
+  // GET /api/v1/shows?date=YYYY-MM-DD
+  rpc GetShowsByDate(GetShowsByDateRequest) returns (GetShowsByDateResponse);
+  // GET /api/v1/shows/{id}
+  rpc GetShowByID(GetShowByIDRequest) returns (GetShowDetailResponse);
+}
+
+message GetShowsByDateRequest {
+  string date = 1;
+}
+
+message ShowResponse {
+  int64 id = 1;
+  int64 movie_id = 2;
+  int64 hall_id = 3;
+  google.protobuf.Timestamp start_time = 4;
+  double price = 5;
+}
+
+message GetShowsByDateResponse {
+  repeated ShowResponse shows = 1;
+}
+
+message GetShowByIDRequest {
+  int64 id = 1;
+}
+
+message GetShowDetailResponse {
+  int64 id = 1;
+  int64 movie_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  double price = 4;
+  Hall hall = 5; 
+}
