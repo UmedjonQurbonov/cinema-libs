@@ -4,7 +4,7 @@
 // - protoc             v7.35.1
 // source: movie/v1/movie.proto
 
-package v1
+package moviev1
 
 import (
 	context "context"

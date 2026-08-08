@@ -4,7 +4,7 @@
 // 	protoc        v7.35.1
 // source: movie/v1/movie.proto
 
-package v1
+package moviev1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -993,7 +993,7 @@ const file_movie_v1_movie_proto_rawDesc = "" +
 	"\x04List\x12\x17.movie.ListHallsRequest\x1a\x18.movie.ListHallsResponse2\xa4\x01\n" +
 	"\vShowService\x12M\n" +
 	"\x0eGetShowsByDate\x12\x1c.movie.GetShowsByDateRequest\x1a\x1d.movie.GetShowsByDateResponse\x12F\n" +
-	"\vGetShowByID\x12\x19.movie.GetShowByIDRequest\x1a\x1c.movie.GetShowDetailResponseB\x11Z\x0fgen/go/movie/v1b\x06proto3"
+	"\vGetShowByID\x12\x19.movie.GetShowByIDRequest\x1a\x1c.movie.GetShowDetailResponseB@Z>github.com/UmedjonQurbonov/cinema-libs/gen/go/movie/v1;moviev1b\x06proto3"
 
 var (
 	file_movie_v1_movie_proto_rawDescOnce sync.Once
