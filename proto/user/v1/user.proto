@@ -1,1 +1,46 @@
 syntax = "proto3";
+
+option go_package = "github.com/UmedjonQurbonov/cinema-libs/gen/go/user/v1;userv1";
+
+package user;
+//
+service UserService {
+  // Register movie
+  rpc Register(RegisterUserRequest) returns (RegisterUserResponse);
+  // Get Movies
+  rpc Login(LoginUserRequest) returns (LoginUserResponse);
+  // Get Movie by id
+  rpc GetMe(GetMeRequest) returns (GetMeResponse);
+}
+
+message RegisterUserRequest {
+  string full_name = 1;
+  string email = 2;
+  string password = 3;
+}
+
+
+message RegisterUserResponse {
+  int64 id = 1;
+}
+
+message LoginUserRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginUserResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message GetMeRequest {
+  
+}
+
+message GetMeResponse {
+  int64 id = 1;
+  string email = 2;
+  string full_name = 3;
+  string role = 4;
+}
